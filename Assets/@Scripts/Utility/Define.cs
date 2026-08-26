@@ -37,6 +37,7 @@ public static class Define
 	{
 		None,
 		Character,
+		Projectile,
 	}
 
 	public enum ECharacterType
@@ -56,6 +57,14 @@ public static class Define
 		Dead,
 	}
 
+	public enum EBossPatternState
+	{
+		Chase,
+		Telegraph,
+		Execute,
+		Recover,
+	}
+
 	public enum EEquipSlot
 	{
 		Shadow,
@@ -67,18 +76,6 @@ public static class Define
 		Bag,
 		Shield,
 		Head,
-	}
-
-	public enum ELookDir
-	{
-		East,
-		NorthEast,
-		North,
-		NorthWest,
-		West,
-		SouthWest,
-		South,
-		SouthEast,
 	}
 
 	public enum EWeaponType
@@ -97,8 +94,8 @@ public static class Define
 		UI = 5,
 		Player = 6,
 		Monster = 7,
-		Obstacle = 9,
-		Projectile = 10,
+		Obstacle = 8,
+		Projectile = 9,
 	}
 }
 
@@ -109,12 +106,4 @@ public static class AnimName
 	public const string ATTACK = "attack";
 	public const string DAMAGED = "hit";
 	public const string DEAD = "dead";
-}
-
-public static class SortingLayers
-{
-	public const int CHARACTER = 300;
-	public const int PROJECTILE = 310;
-	public const int SKILL_EFFECT = 310;
-	public const int DAMAGE_FONT = 410;
 }

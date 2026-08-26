@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Stage1Group
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Stage1Group
+  m_GUID: 16dc4b9a8377ac243a82ebade41ae497
+  m_SerializeEntries:
+  - m_GUID: 10b802153b3f9b44d942f2f8bff8d475
+    m_Address: UI_Game
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16c2a2fc9b7002c4c9742ccfce65a9d0
+    m_Address: Projectile_Bullet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2626313686dff5642bd71b62cfc1db5d
+    m_Address: UI_GameOver
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e241d672f345e742bc84e3972fb047c
+    m_Address: UI_StageClear
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 682b9fb12055e70449ff534fe537e7c6
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 824212215887f3e4b90427195c78f31c
+    m_Address: AoE_CircleTelegraph
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc4a08f2903888e429a8f0f61293fd08
+    m_Address: Monster_Zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf0e095871c79784db74f73d5e7fcd3e
+    m_Address: Boss_Zombie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 383cc9fbe66915647af6a27037da3c1d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 669ccfea946a6a346a6c7aa2dc49b002, type: 2}
+    - {fileID: 11400000, guid: 88dc4581e6e4e5d4686dab2c0d6f4196, type: 2}

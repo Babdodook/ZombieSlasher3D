@@ -7,8 +7,10 @@ public class Managers : MonoBehaviour
 
 	#region Contents
 	private GameManager _game = new GameManager();
+	private StageManager _stage = new StageManager();
 
 	public static GameManager Game { get { return Instance?._game; } }
+	public static StageManager Stage { get { return Instance?._stage; } }
 	#endregion
 
 	#region Core
@@ -49,5 +51,6 @@ public class Managers : MonoBehaviour
 		UI.Clear();
 		Pool.Clear();
 		Scene.Clear();
+		Stage.Clear();
 	}
 }
