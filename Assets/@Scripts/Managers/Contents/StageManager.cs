@@ -57,7 +57,19 @@ public class StageManager
 		if (go == null)
 			return;
 
-		go.transform.position = _player.position + _player.forward * 10f;
+		Vector3 desiredPos = _player.position + _player.forward * 10f;
+		Vector3 spawnPos = desiredPos;
+
+		if (UnityEngine.AI.NavMesh.SamplePosition(desiredPos, out UnityEngine.AI.NavMeshHit navHit, 10f, UnityEngine.AI.NavMesh.AllAreas))
+			spawnPos = navHit.position;
+		else if (UnityEngine.AI.NavMesh.SamplePosition(_player.position, out navHit, 50f, UnityEngine.AI.NavMesh.AllAreas))
+			spawnPos = navHit.position; // Desired spot is off the baked navmesh; fall back to the nearest mesh point to the player.
+
+		UnityEngine.AI.NavMeshAgent agent = go.GetComponent<UnityEngine.AI.NavMeshAgent>();
+		if (agent != null)
+			agent.Warp(spawnPos);
+		else
+			go.transform.position = spawnPos;
 
 		BossController boss = go.GetComponent<BossController>();
 		if (boss == null)

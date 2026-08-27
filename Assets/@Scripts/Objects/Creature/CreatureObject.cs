@@ -29,6 +29,19 @@ public class CreatureObject : BaseObject
 		return true;
 	}
 
+	// Pooled objects are reused via SetActive(true) instead of a fresh Awake(), so
+	// death/HP state left over from the previous life must be reset here every time.
+	protected virtual void OnEnable()
+	{
+		if (_init == false)
+			return;
+
+		MaxHp = _maxHp;
+		CurrentHp = _maxHp;
+		IsDead = false;
+		State = ECharacterState.Idle;
+	}
+
 	public virtual void TakeDamage(float damage, CreatureObject attacker = null)
 	{
 		if (IsDead)

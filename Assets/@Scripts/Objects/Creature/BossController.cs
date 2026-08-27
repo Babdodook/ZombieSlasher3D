@@ -34,6 +34,13 @@ public class BossController : MonsterController
 		return true;
 	}
 
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+		_patternState = EBossPatternState.Chase;
+		_patternTimer = 0f;
+	}
+
 	protected override void UpdateAI()
 	{
 		if (_target == null)

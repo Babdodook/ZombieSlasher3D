@@ -65,12 +65,18 @@ public class MinionSpawner
 
 		if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 5f, NavMesh.AllAreas))
 			pos = hit.position;
+		else if (NavMesh.SamplePosition(player.position, out hit, 50f, NavMesh.AllAreas))
+			pos = hit.position; // Ring point is off the baked navmesh; fall back to the nearest mesh point to the player.
 
 		GameObject go = Managers.Resource.Instantiate(wave.Data.MonsterPrefabKey, pooling: true);
 		if (go == null)
 			return;
 
-		go.transform.position = pos;
+		NavMeshAgent agent = go.GetComponent<NavMeshAgent>();
+		if (agent != null)
+			agent.Warp(pos);
+		else
+			go.transform.position = pos;
 
 		MonsterController monster = go.GetComponent<MonsterController>();
 		if (monster != null)

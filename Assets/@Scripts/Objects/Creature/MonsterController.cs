@@ -27,6 +27,12 @@ public class MonsterController : CreatureObject
 		return true;
 	}
 
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+		_contactTimer = 0f;
+	}
+
 	public void SetTarget(Transform target)
 	{
 		_target = target;
