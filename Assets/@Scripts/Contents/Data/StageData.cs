@@ -18,4 +18,9 @@ public class StageData : ScriptableObject
 	[Header("Difficulty Scaling")]
 	public float DifficultyHpMultiplier = 1f;
 	public float DifficultyDamageMultiplier = 1f;
+
+	[Header("Leveling")]
+	public float BaseXpToNextLevel = 10f;
+	public float XpToNextLevelGrowth = 5f;
+	public List<SkillData> SkillRoster = new List<SkillData>();
 }

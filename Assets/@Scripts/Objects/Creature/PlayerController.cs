@@ -4,6 +4,7 @@ using static Define;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerInputReader))]
 [RequireComponent(typeof(PlayerWeapon))]
+[RequireComponent(typeof(PlayerRunStats))]
 public class PlayerController : CreatureObject
 {
 	[SerializeField] private float _moveSpeed = 6f;
@@ -12,6 +13,7 @@ public class PlayerController : CreatureObject
 	private Rigidbody _rb;
 	private PlayerInputReader _input;
 	private PlayerWeapon _weapon;
+	private PlayerRunStats _stats;
 	private Camera _cam;
 
 	private Vector3 _aimDirection = Vector3.forward;
@@ -29,6 +31,7 @@ public class PlayerController : CreatureObject
 
 		_input = GetComponent<PlayerInputReader>();
 		_weapon = GetComponent<PlayerWeapon>();
+		_stats = GetComponent<PlayerRunStats>();
 		_cam = Camera.main;
 
 		return true;
@@ -40,7 +43,7 @@ public class PlayerController : CreatureObject
 			return;
 
 		Vector3 move = new Vector3(_input.MoveInput.x, 0f, _input.MoveInput.y);
-		_rb.MovePosition(_rb.position + move * _moveSpeed * Time.fixedDeltaTime);
+		_rb.MovePosition(_rb.position + move * _moveSpeed * _stats.MoveSpeedMultiplier * Time.fixedDeltaTime);
 
 		SetState(move.sqrMagnitude > 0.0001f ? ECharacterState.Move : ECharacterState.Idle);
 	}
@@ -83,5 +86,10 @@ public class PlayerController : CreatureObject
 
 		_rb.linearVelocity = Vector3.zero;
 		Managers.Game.SetState(EGameState.GameOver);
+	}
+
+	public void ApplyMaxHpBonus(float amount)
+	{
+		ModifyMaxHp(amount, healByDelta: true);
 	}
 }

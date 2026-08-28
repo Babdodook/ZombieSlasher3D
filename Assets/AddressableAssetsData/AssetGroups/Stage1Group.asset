@@ -39,8 +39,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Stage1
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4814558d8a5d14f449bf554427c0e828
+    m_Address: UI_LevelUp
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 682b9fb12055e70449ff534fe537e7c6
     m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 690056e4d52364f4baab74f27245fb28
+    m_Address: ExperienceGem
     m_ReadOnly: 0
     m_SerializedLabels:
     - Stage1

@@ -43,6 +43,19 @@ public class GameScene : BaseScene
 
 		Managers.Stage.Init(_stageData, playerGo.transform);
 		Managers.Stage.OnStageClear += () => Managers.UI.ShowPopupUI<UI_StageClear>();
+
+		Managers.Level.Init(_stageData, playerGo.transform);
+		Managers.Level.OnLevelUp += _ => ShowLevelUpChoices();
+	}
+
+	private void ShowLevelUpChoices()
+	{
+		var choices = Managers.Level.RollChoices(3);
+		if (choices.Count == 0)
+			return;
+
+		Managers.UI.ShowPopupUI<UI_LevelUp>().Setup(choices);
+		Time.timeScale = 0f;
 	}
 
 	private void Update()
@@ -53,6 +66,7 @@ public class GameScene : BaseScene
 
 	public override void Clear()
 	{
+		Time.timeScale = 1f;
 		Managers.Game.Clear();
 		Managers.Stage.Clear();
 	}

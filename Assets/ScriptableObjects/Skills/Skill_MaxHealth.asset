@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e472e553dbb6e4691e6892ea5d80fc, type: 3}
+  m_Name: Skill_MaxHealth
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  DisplayName: "\uCCB4\uB825 \uAC15\uD654"
+  Description: "\uCD5C\uB300 \uCCB4\uB825 +{0:0}"
+  DisplayNameEN: Max Health Up
+  DescriptionEN: Max Health +{0:0}
+  Icon: {fileID: 0}
+  MaxLevel: 5
+  MagnitudePerLevel: 10
+  EffectType: 3

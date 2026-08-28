@@ -8,6 +8,7 @@ public class MonsterController : CreatureObject
 	[SerializeField] protected float _moveSpeed = 3.5f;
 	[SerializeField] protected float _contactDamage = 5f;
 	[SerializeField] protected float _contactDamageCooldown = 1f;
+	[SerializeField] protected float _xpReward = 1f;
 
 	protected NavMeshAgent _agent;
 	protected Transform _target;
@@ -98,6 +99,16 @@ public class MonsterController : CreatureObject
 
 		Managers.Game.AddKill();
 		Managers.Stage.NotifyMinionKilled();
+		SpawnExperienceGem();
 		Managers.Resource.Destroy(gameObject);
+	}
+
+	private void SpawnExperienceGem()
+	{
+		GameObject go = Managers.Resource.Instantiate("ExperienceGem", pooling: true);
+		if (go == null)
+			return;
+
+		go.GetComponent<ExperienceGem>()?.Activate(transform.position, _xpReward);
 	}
 }

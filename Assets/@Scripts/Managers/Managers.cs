@@ -8,18 +8,22 @@ public class Managers : MonoBehaviour
 	#region Contents
 	private GameManager _game = new GameManager();
 	private StageManager _stage = new StageManager();
+	private LevelManager _level = new LevelManager();
 
 	public static GameManager Game { get { return Instance?._game; } }
 	public static StageManager Stage { get { return Instance?._stage; } }
+	public static LevelManager Level { get { return Instance?._level; } }
 	#endregion
 
 	#region Core
+	private LocalizationManager _localization = new LocalizationManager();
 	private PoolManager _pool = new PoolManager();
 	private ResourceManager _resource = new ResourceManager();
 	private SceneManagerEx _scene = new SceneManagerEx();
 	private SoundManager _sound = new SoundManager();
 	private UIManager _ui = new UIManager();
 
+	public static LocalizationManager Localization { get { return Instance?._localization; } }
 	public static PoolManager Pool { get { return Instance?._pool; } }
 	public static ResourceManager Resource { get { return Instance?._resource; } }
 	public static SceneManagerEx Scene { get { return Instance?._scene; } }
@@ -42,6 +46,7 @@ public class Managers : MonoBehaviour
 
 			s_instance = go.GetComponent<Managers>();
 			s_instance._sound.Init();
+			s_instance._localization.Init();
 		}
 	}
 
@@ -52,5 +57,6 @@ public class Managers : MonoBehaviour
 		Pool.Clear();
 		Scene.Clear();
 		Stage.Clear();
+		Level.Clear();
 	}
 }

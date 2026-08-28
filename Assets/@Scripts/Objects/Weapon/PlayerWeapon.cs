@@ -8,6 +8,12 @@ public class PlayerWeapon : MonoBehaviour
 	[SerializeField] private Transform _muzzle;
 
 	private float _cooldown;
+	private PlayerRunStats _stats;
+
+	private void Awake()
+	{
+		_stats = GetComponent<PlayerRunStats>();
+	}
 
 	public void SetFiring(bool held, Vector3 aimDir)
 	{
@@ -16,7 +22,7 @@ public class PlayerWeapon : MonoBehaviour
 		if (held && _cooldown <= 0f)
 		{
 			Fire(aimDir);
-			_cooldown = 1f / _fireRate;
+			_cooldown = 1f / (_fireRate * _stats.FireRateMultiplier);
 		}
 	}
 
@@ -30,6 +36,6 @@ public class PlayerWeapon : MonoBehaviour
 		go.transform.SetPositionAndRotation(origin.position, Quaternion.LookRotation(dir));
 
 		Projectile projectile = go.GetComponent<Projectile>();
-		projectile?.Launch(dir, _damage);
+		projectile?.Launch(dir, _damage * _stats.DamageMultiplier);
 	}
 }

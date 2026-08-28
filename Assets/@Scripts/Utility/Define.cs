@@ -38,6 +38,7 @@ public static class Define
 		None,
 		Character,
 		Projectile,
+		Pickup,
 	}
 
 	public enum ECharacterType
@@ -83,6 +84,21 @@ public static class Define
 		None,
 		Melee,
 		Ranged,
+	}
+
+	public enum ESkillEffectType
+	{
+		Damage,
+		FireRate,
+		MoveSpeed,
+		MaxHealth,
+		PickupRadius,
+	}
+
+	public enum ELanguage
+	{
+		Korean,
+		English,
 	}
 
 	public enum ELayer

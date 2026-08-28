@@ -12,11 +12,13 @@ public class UI_Game : UI_Scene
 		BossGaugeFill,
 		BossHpFill,
 		PlayerHpFill,
+		LevelXpFill,
 	}
 
 	private enum Texts
 	{
 		KillCountText,
+		LevelText,
 	}
 
 	private PlayerController _player;
@@ -34,6 +36,7 @@ public class UI_Game : UI_Scene
 
 		Managers.Stage.OnBossGaugeChanged += RefreshBossGauge;
 		Managers.Stage.OnBossSpawned += OnBossSpawned;
+		Managers.Level.OnXpChanged += RefreshLevelXp;
 
 		return true;
 	}
@@ -64,6 +67,12 @@ public class UI_Game : UI_Scene
 	private void RefreshPlayerHp(CreatureObject player, float current, float max)
 	{
 		GetImage((int)Images.PlayerHpFill).fillAmount = max <= 0f ? 0f : current / max;
+	}
+
+	private void RefreshLevelXp(int level, float currentXp, float xpToNext)
+	{
+		GetImage((int)Images.LevelXpFill).fillAmount = xpToNext <= 0f ? 0f : currentXp / xpToNext;
+		GetText((int)Texts.LevelText).text = $"Lv.{level}";
 	}
 
 	private void Update()

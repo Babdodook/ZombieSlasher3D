@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   StageName: Stage1
   BossPrefabKey: Boss_Zombie
-  BossGaugeKillThreshold: 40
+  BossGaugeKillThreshold: 10
   MinionSpawnRadiusMin: 8
   MinionSpawnRadiusMax: 12
   Waves:
@@ -25,3 +25,11 @@ MonoBehaviour:
     MaxAliveCap: 30
   DifficultyHpMultiplier: 1
   DifficultyDamageMultiplier: 1
+  BaseXpToNextLevel: 10
+  XpToNextLevelGrowth: 5
+  SkillRoster:
+  - {fileID: 11400000, guid: 728005a0b0981564d8868df51d2fbf93, type: 2}
+  - {fileID: 11400000, guid: 0de02e2923e859c49bb779de99f8323a, type: 2}
+  - {fileID: 11400000, guid: 192f5598dfe374d49b40fdc564788678, type: 2}
+  - {fileID: 11400000, guid: 6624086f316fbfb429411a423ee12639, type: 2}
+  - {fileID: 11400000, guid: 5f5cf2b5d2370cd42bac76843060f06d, type: 2}

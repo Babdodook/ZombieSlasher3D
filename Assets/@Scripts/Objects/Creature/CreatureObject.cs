@@ -68,4 +68,13 @@ public class CreatureObject : BaseObject
 	{
 		State = state;
 	}
+
+	// Only CreatureObject can invoke OnHpChanged, so subclasses that grant max-HP
+	// bonuses (e.g. a level-up skill) route through this instead of touching HP fields directly.
+	protected void ModifyMaxHp(float delta, bool healByDelta)
+	{
+		MaxHp = Mathf.Max(1f, MaxHp + delta);
+		CurrentHp = healByDelta ? Mathf.Min(MaxHp, CurrentHp + delta) : Mathf.Min(CurrentHp, MaxHp);
+		OnHpChanged?.Invoke(this, CurrentHp, MaxHp);
+	}
 }
