@@ -15,14 +15,18 @@ public class CreatureObject : BaseObject
 	public event Action<CreatureObject, float, float> OnHpChanged;
 	public event Action<CreatureObject> OnDeath;
 
+	// Lets subclasses (e.g. MonsterController) source max HP from a data asset
+	// instead of the inspector field, without CreatureObject needing to know about it.
+	protected virtual float GetBaseMaxHp() => _maxHp;
+
 	public override bool Init()
 	{
 		if (base.Init() == false)
 			return false;
 
 		ObjectType = EObjectType.Character;
-		MaxHp = _maxHp;
-		CurrentHp = _maxHp;
+		MaxHp = GetBaseMaxHp();
+		CurrentHp = MaxHp;
 		IsDead = false;
 		State = ECharacterState.Idle;
 
@@ -36,8 +40,8 @@ public class CreatureObject : BaseObject
 		if (_init == false)
 			return;
 
-		MaxHp = _maxHp;
-		CurrentHp = _maxHp;
+		MaxHp = GetBaseMaxHp();
+		CurrentHp = MaxHp;
 		IsDead = false;
 		State = ECharacterState.Idle;
 	}

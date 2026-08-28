@@ -10,6 +10,12 @@ public class TitleScene : BaseScene
 		SceneType = Define.EScene.TitleScene;
 		Managers.Init();
 
+		Managers.Resource.LoadAllAsync<GameObject>("Title", (key, cur, total) =>
+		{
+			if (cur == total)
+				Managers.UI.ShowSceneUI<UI_StageSelect>();
+		});
+
 		return true;
 	}
 

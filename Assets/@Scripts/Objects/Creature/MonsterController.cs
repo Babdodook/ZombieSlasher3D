@@ -5,15 +5,16 @@ using static Define;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MonsterController : CreatureObject
 {
-	[SerializeField] protected float _moveSpeed = 3.5f;
-	[SerializeField] protected float _contactDamage = 5f;
-	[SerializeField] protected float _contactDamageCooldown = 1f;
-	[SerializeField] protected float _xpReward = 1f;
+	[SerializeField] protected MonsterData _data;
 
 	protected NavMeshAgent _agent;
 	protected Transform _target;
 
+	private float _contactDamage;
+	private float _contactDamageCooldown;
 	private float _contactTimer;
+
+	protected override float GetBaseMaxHp() => _data != null ? _data.MaxHp : base.GetBaseMaxHp();
 
 	public override bool Init()
 	{
@@ -23,7 +24,9 @@ public class MonsterController : CreatureObject
 		CreatureType = ECharacterType.Monster;
 
 		_agent = GetComponent<NavMeshAgent>();
-		_agent.speed = _moveSpeed;
+		_agent.speed = _data != null ? _data.MoveSpeed : _agent.speed;
+		_contactDamage = _data != null ? _data.ContactDamage : 0f;
+		_contactDamageCooldown = _data != null ? _data.ContactDamageCooldown : 1f;
 
 		return true;
 	}
@@ -32,6 +35,8 @@ public class MonsterController : CreatureObject
 	{
 		base.OnEnable();
 		_contactTimer = 0f;
+		_contactDamage = _data != null ? _data.ContactDamage : 0f;
+		_contactDamageCooldown = _data != null ? _data.ContactDamageCooldown : 1f;
 	}
 
 	public void SetTarget(Transform target)
@@ -39,11 +44,16 @@ public class MonsterController : CreatureObject
 		_target = target;
 	}
 
-	public void ApplyDifficultyScale(float hpMultiplier, float damageMultiplier)
+	// stageIndex feeds MonsterData's per-stage growth so the same monster can be
+	// reused across stages while still getting progressively stronger.
+	public void ApplyDifficultyScale(int stageIndex, float hpMultiplier, float damageMultiplier)
 	{
-		MaxHp *= hpMultiplier;
+		float hpGrowth = _data != null ? _data.HpGrowthPerStage * stageIndex : 0f;
+		float damageGrowth = _data != null ? _data.DamageGrowthPerStage * stageIndex : 0f;
+
+		MaxHp = (GetBaseMaxHp() + hpGrowth) * hpMultiplier;
 		CurrentHp = MaxHp;
-		_contactDamage *= damageMultiplier;
+		_contactDamage = (_contactDamage + damageGrowth) * damageMultiplier;
 	}
 
 	protected virtual void Update()
@@ -109,6 +119,6 @@ public class MonsterController : CreatureObject
 		if (go == null)
 			return;
 
-		go.GetComponent<ExperienceGem>()?.Activate(transform.position, _xpReward);
+		go.GetComponent<ExperienceGem>()?.Activate(transform.position, _data != null ? _data.XpReward : 0f);
 	}
 }

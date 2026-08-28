@@ -16,6 +16,7 @@ public class StageData : ScriptableObject
 	public List<WaveData> Waves = new List<WaveData>();
 
 	[Header("Difficulty Scaling")]
+	public int StageIndex = 0;
 	public float DifficultyHpMultiplier = 1f;
 	public float DifficultyDamageMultiplier = 1f;
 

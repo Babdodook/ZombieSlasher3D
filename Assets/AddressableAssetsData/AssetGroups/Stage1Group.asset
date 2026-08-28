@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Stage1Group
   m_GUID: 16dc4b9a8377ac243a82ebade41ae497
   m_SerializeEntries:
+  - m_GUID: 029327f331596e740982e7017326fcc9
+    m_Address: UI_StageSelect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Title
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 10b802153b3f9b44d942f2f8bff8d475
     m_Address: UI_Game
     m_ReadOnly: 0

@@ -2,7 +2,7 @@ public class UI_StageClear : UI_Popup
 {
 	private enum Buttons
 	{
-		RestartButton,
+		BackToTitleButton,
 	}
 
 	public override bool Init()
@@ -11,7 +11,7 @@ public class UI_StageClear : UI_Popup
 			return false;
 
 		BindButtons(typeof(Buttons));
-		GetButton((int)Buttons.RestartButton).gameObject.BindEvent(_ => Managers.Scene.LoadScene(Define.EScene.GameScene));
+		GetButton((int)Buttons.BackToTitleButton).gameObject.BindEvent(_ => Managers.Scene.LoadScene(Define.EScene.TitleScene));
 
 		return true;
 	}

@@ -6,6 +6,12 @@ public class GameManager
 	public EGameState State { get; private set; } = EGameState.Ready;
 	public float ElapsedTime { get; private set; }
 	public int KillCount { get; private set; }
+	public StageData SelectedStage { get; private set; }
+
+	public void SetSelectedStage(StageData stage)
+	{
+		SelectedStage = stage;
+	}
 
 	public void Init()
 	{

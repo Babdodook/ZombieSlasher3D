@@ -82,7 +82,7 @@ public class MinionSpawner
 		if (monster != null)
 		{
 			monster.SetTarget(player);
-			monster.ApplyDifficultyScale(_stage.DifficultyHpMultiplier, _stage.DifficultyDamageMultiplier);
+			monster.ApplyDifficultyScale(_stage.StageIndex, _stage.DifficultyHpMultiplier, _stage.DifficultyDamageMultiplier);
 		}
 
 		wave.SpawnedCount++;

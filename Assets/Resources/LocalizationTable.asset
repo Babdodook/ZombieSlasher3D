@@ -22,3 +22,18 @@ MonoBehaviour:
   - Key: ui.stageclear.title
     Korean: "\uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4!"
     English: STAGE CLEAR!
+  - Key: ui.stageclear.backtotitle
+    Korean: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD"
+    English: Select Stage
+  - Key: ui.stageselect.title
+    Korean: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD"
+    English: SELECT STAGE
+  - Key: ui.stageselect.stage1
+    Korean: "\uC2A4\uD14C\uC774\uC9C0 1"
+    English: Stage 1
+  - Key: ui.stageselect.stage2
+    Korean: "\uC2A4\uD14C\uC774\uC9C0 2"
+    English: Stage 2
+  - Key: ui.stageselect.stage3
+    Korean: "\uC2A4\uD14C\uC774\uC9C0 3"
+    English: Stage 3

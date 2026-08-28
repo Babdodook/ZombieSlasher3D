@@ -41,10 +41,12 @@ public class GameScene : BaseScene
 		if (_cameraFollow != null)
 			_cameraFollow.SetTarget(playerGo.transform);
 
-		Managers.Stage.Init(_stageData, playerGo.transform);
+		StageData stageData = Managers.Game.SelectedStage != null ? Managers.Game.SelectedStage : _stageData;
+
+		Managers.Stage.Init(stageData, playerGo.transform);
 		Managers.Stage.OnStageClear += () => Managers.UI.ShowPopupUI<UI_StageClear>();
 
-		Managers.Level.Init(_stageData, playerGo.transform);
+		Managers.Level.Init(stageData, playerGo.transform);
 		Managers.Level.OnLevelUp += _ => ShowLevelUpChoices();
 	}
 
